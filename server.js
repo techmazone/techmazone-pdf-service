@@ -36,7 +36,7 @@ app.post('/api/generate-receipt', authenticate, async (req, res) => {
 
     const page = await browser.newPage();
     await page.setViewport({ width: 700, height: 1000 });
-    await page.setContent(html, { waitUntil: 'networkidle0', timeout: 15000 });
+    await page.setContent(html, { waitUntil: 'networkidle0', timeout: 60000 });
     await page.evaluateHandle('document.fonts.ready');
 
     // Get the exact content height
@@ -80,7 +80,7 @@ app.post('/api/generate-certificate', authenticate, async (req, res) => {
 
     const page = await browser.newPage();
     await page.setViewport({ width: 1122, height: 793 });
-    await page.setContent(html, { waitUntil: 'networkidle0', timeout: 15000 });
+    await page.setContent(html, { waitUntil: 'networkidle0', timeout: 60000 });
     await page.evaluateHandle('document.fonts.ready');
 
     const pdfBuffer = await page.pdf({
